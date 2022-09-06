@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+
+<body>
+    <video id="video" autoplay muted>
+        <source id="source" src="">
+        </source>
+    </video>
+    <script type="text/javascript">
+        var resourcepath = "resource/";
+        var platlistpath = resourcepath + "playlist.json"
+        var end_video = "end.mp4"
+        var video = document.getElementById('video');
+        var sources = document.getElementById('source');
+        var playlist = getplaylist();
+        var index = 0;
+
+        loadVideo();
+        video.onended = function () {
+            loadVideo();
+        }
+
+        sources.onerror = function () {
+            playempty();
+        }
+
+        function loadVideo() {
+            playlist = getplaylist();
+            if (index >= Object.keys(playlist).length) {
+                index = 0;
+            }
+            var filepath = "";
+            if (Object.keys(playlist).length == 0) {
+                filepath = end_video;
+            } else {
+                filepath = resourcepath + playlist[index];
+            }
+            sources.src = filepath;
+            video.load();
+            index++;
+        }
+
+        function playempty() {
+            sources.src = end_video;
+            video.load();
+            index++;
+        }
+
+        function getplaylist() {
+            try {
+                var json_date = readTextFile(platlistpath);
+                return JSON.parse(json_date);
+            } catch (ex) {
+                playempty();
+            }
+
+        }
+
+        function readTextFile(file) {
+            var rawFile = new XMLHttpRequest();
+            var result;
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        result = rawFile.responseText;
+                        // alert(result);
+                    }
+                }
+            }
+            rawFile.send(null);
+            return result;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+</head>
+
+</html>
+
+<style>
+    video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
