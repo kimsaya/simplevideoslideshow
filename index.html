@@ -4,13 +4,13 @@
     <title>Water Display</title>
 
 <body>
-    <video id="video" autoplay muted controls>
+    <video id="video" autoplay muted>
         <source id="source" src="">
         </source>
     </video>
     <script type="text/javascript">
         var url = "http://localhost:8080/"
-        var resourcepath = url + "resource/";
+        var resourcepath = url + "src/";
         var platlistpath = resourcepath + "playlist.json"
         var end_video = url + "end.mp4"
         var video = document.getElementById('video');
