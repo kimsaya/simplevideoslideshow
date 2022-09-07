@@ -8,12 +8,12 @@ import (
 
 func main() {
 	// configure the songs directory name and port
-	// const storagedisk = "C:/Users/AI/Desktop/videosrc/"
+	const storagedisk = "./videoapp"
 	const port = 8080
 
 	// add a handler for the song files
 	// http.Handle("/", addHeaders(http.FileServer(http.Dir("./"))))
-	http.Handle("/", addHeaders(http.FileServer(http.Dir("./"))))
+	http.Handle("/", addHeaders(http.FileServer(http.Dir(storagedisk))))
 	// http.Handle("/src/", addHeaders(http.FileServer(http.Dir(storagedisk))))
 	
 	fmt.Printf("Starting server on %v\n", port)
