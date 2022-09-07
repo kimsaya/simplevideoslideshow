@@ -1,12 +1,17 @@
-apt update
-apt -y upgrade
-apt install -y firefox
-apt install -y ntp
+sudo apt update
+sudo apt -y upgrade
+sudo apt install -y firefox
+sudo apt install -y ntp
+sudo apt install -y unclutter
 
-chmod 777 /home/orangepi/videoapp
+sudo chmod 777 /home/orangepi/videoapp
 cd /home/orangepi/videoapp
 
-mkdir ./src
-chmod 777 *
+touch ./app.logs
+touch ./firefox.logs
 
-crontab ./initcron
+sudo mkdir ./src
+sudo chmod 777 *
+
+sudo crontab ./rootcron
+crontab ./usercron

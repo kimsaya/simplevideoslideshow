@@ -1,0 +1,3 @@
+@reboot sleep 5 && sudo mount -t vfat /dev/sda1 /home/orangepi/videoapp/src
+@reboot sleep 5 && sudo nohup /home/orangepi/videoapp/app > /home/orangepi/videoapp/app.logs &
+@reboot sleep 5 && sudo nohup unclutter -idle 2 &
