@@ -8,7 +8,8 @@ import (
 
 func main() {
 	// configure the songs directory name and port
-	const storagedisk = "/home/orangepi/videoapp/"
+	// const storagedisk = "/home/orangepi/videoapp/"
+	const storagedisk = "./" /** Debug / Dev */
 	const port = 8080
 
 	// add a handler for the song files

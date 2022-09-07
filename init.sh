@@ -3,11 +3,10 @@ apt -y upgrade
 apt install -y firefox
 apt install -y ntp
 
+chmod 777 /home/orangepi/videoapp
 cd /home/orangepi/videoapp
 
-# chmod 777 ./run.sh
-chmod 777 ./app
-
 mkdir ./src
+chmod 777 *
 
 crontab ./initcron
