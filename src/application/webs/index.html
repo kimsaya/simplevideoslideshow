@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Water Display</title>
+
+<body>
+    <!-- <video id="video" autoplay muted controls> -->
+    <video id="video" autoplay muted>
+        <source id="source" src="">
+        </source>
+    </video>
+    <script type="text/javascript">
+        var url = "http://localhost:8080/"
+        var video = document.getElementById('video');
+        var sources = document.getElementById('source');
+        loadVideo();
+
+        video.onended = function () {
+            loadVideo();
+        }
+
+        sources.onerror = function () {
+            sleep(5000);
+            loadVideo();
+        }
+
+        function loadVideo() {
+            sources.src = url + "content?time=" + new Date().getTime();
+            video.load();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+</head>
+
+</html>
+
+<style>
+    video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>

@@ -1,0 +1,5 @@
+package gpio
+
+func OnInterup() {
+
+}

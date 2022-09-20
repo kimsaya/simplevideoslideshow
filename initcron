@@ -1,5 +1,0 @@
-@reboot sleep 5 && sudo mount -t vfat /dev/sda1 /home/orangepi/videoapp/src
-
-@reboot sleep 5 && nohup /home/orangepi/videoapp/app > /home/orangepi/videoapp/app.logs &
-
-@reboot sleep 5 && export DISPLAY=:0 && nohup firefox --kiosk http://localhost:8080/ > /home/orangepi/videoapp/firefox.logs &
