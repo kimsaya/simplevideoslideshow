@@ -4,9 +4,9 @@
 <head>
     <title>Water Display</title>
 
-<body>
+<body style="background-color:rgb(0, 0, 0);">
     <!-- <video id="video" autoplay muted controls> -->
-    <video id="video" autoplay muted>
+    <video id="video" autoplay muted style="display: none;">
         <source id="source" src="">
         </source>
     </video>
@@ -16,18 +16,38 @@
         var sources = document.getElementById('source');
         loadVideo();
 
+        video.onplay = function () {
+            showVideo();
+        }
+
         video.onended = function () {
             loadVideo();
         }
 
         sources.onerror = function () {
             sleep(5000);
+            hideVideo();
             loadVideo();
         }
 
         function loadVideo() {
             sources.src = url + "content?time=" + new Date().getTime();
             video.load();
+        }
+
+        function hideVideo() {
+            if (video.style.display === "none") {
+                return;
+            }
+            video.style.display = "none";
+
+        }
+
+        function showVideo() {
+            if (video.style.display === "block") {
+                return;
+            }
+            video.style.display = "block";
         }
 
         function sleep(ms) {
