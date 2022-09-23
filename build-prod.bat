@@ -1,4 +1,4 @@
-set VERSION=SDISPLAY_V_0_0_1
+set VERSION=SDISPLAY_V_0_0_1_Linux
 set DIRECTORY=.\builds\%VERSION%\
 
 go env -w GOOS=linux GOARCH=arm
@@ -8,6 +8,7 @@ go env -w GOOS=windows GOARCH=amd64
 if not exist .\builds mkdir .\builds
 if not exist %DIRECTORY% mkdir %DIRECTORY%
 if not exist %DIRECTORY%webs mkdir %DIRECTORY%webs
+if not exist %DIRECTORY%inits mkdir %DIRECTORY%inits
 @REM if not exist %~dp0builds mkdir %~dp0builds
 @REM if not exist %~dp0builds\apps mkdir %~dp0builds\apps
 @REM if not exist %~dp0builds\pre-config mkdir %~dp0builds\pre-config
@@ -18,6 +19,7 @@ if not exist %DIRECTORY%webs mkdir %DIRECTORY%webs
 
 move /y .\main %DIRECTORY%app
 copy /y .\src\application\webs\ %DIRECTORY%webs\
+xcopy /y .\src\inits\* %DIRECTORY%inits\ /e
 @REM move /y %~dp0poscar_face_agent builds\apps\poscar_face_agent_linux_arm_%VERSION%
 @REM copy /y %~dp0init.sh-vscode\vscode\* builds\release\*
 @REM copy /y %~dp0builds\pre-config\default\new.conf builds\release\new.conf

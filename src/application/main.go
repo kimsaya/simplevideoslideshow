@@ -20,4 +20,7 @@ func main() {
 	http.HandleFunc("/", api.Index)
 	http.HandleFunc("/content", api.Content)
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%v", core.GetPort()), nil))
+
+	// This class can build only in Linux env
+	// opio.InitInterruptor()
 }
