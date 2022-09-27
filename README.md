@@ -34,8 +34,8 @@
 - sudo apt update
 - sudo apt install cron
 - sudo systemctl enable cron
+- File: /var/spool/cron/crontabs/
 ```cron
-/var/spool/cron/crontabs/
 30 17 * * 2 curl http://www.google.com
 ```
 
