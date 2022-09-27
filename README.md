@@ -1,37 +1,46 @@
 # simplevideoslideshow
 
+# Fire Fox
+- Turn off firefox security
+  - New tap
+  - about:config
+  - security.fileuri.strict_origin_policy
 
-Turn off firefox security
-New tap
-about:config
-security.fileuri.strict_origin_policy
+- Install firefox
+  - sudo apt install firefox
+
+- Open firefox
+  - firefox --new-tab http://localhost:8080
 
 
 # Install Os
-sudo nand-sata-install
-Boot from eMMC
-format as ext4
+- Generic
+  - sudo nand-sata-install
+  - Boot from eMMC
+  - format as ext4
+- For Armbian
+  - sudo armbian-config
+  - System
+  - Install
+  - ext4
 
 # Check OS
-hostnamectl
-ps -a
-ps -aux
+- hostnamectl
+- ps -a
+- ps -aux
+- ps aux | grep appName
 
 # Cron
-sudo apt update
-sudo apt install cron
-sudo systemctl enable cron
+- sudo apt update
+- sudo apt install cron
+- sudo systemctl enable cron
+```cron
 /var/spool/cron/crontabs/
 30 17 * * 2 curl http://www.google.com
+```
 
-crontab -e
-sudo nano /etc/crontab
-
-# Install firefox
-sudo apt install firefox
-
-# Open firefox
-firefox --new-tab http://localhost:8080
+- crontab -e
+- sudo nano /etc/crontab
 
 # Armbian 
 - Autologin
