@@ -45,3 +45,16 @@ mkdir -p /etc/lightdm/lightdm.conf.d
 			EOF
 ```
 https://github.com/armbian/build/blob/master/packages/bsp/common/usr/lib/armbian/armbian-firstlogin#L297-L304
+
+- Autologin option 2
+File: /etc/lightdm/lightdm.conf.d/11-armbian.conf
+```sh
+[Seat:*]
+autologin-user=pi
+autologin-user-timeout=0
+user-session=xfce
+greeter-show-manual-login=false
+greeter-hide-users=false
+allow-guest=false
+```
+Note that also removed the password for my user (in my case 'pi')
