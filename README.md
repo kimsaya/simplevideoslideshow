@@ -32,3 +32,16 @@ sudo apt install firefox
 
 # Open firefox
 firefox --new-tab http://localhost:8080
+
+# Armbian 
+- Autologin
+```sh
+mkdir -p /etc/lightdm/lightdm.conf.d
+			cat <<-EOF > /etc/lightdm/lightdm.conf.d/22-armbian-autologin.conf
+			[Seat:*]
+			autologin-user=$RealUserName
+			autologin-user-timeout=0
+			user-session=xfce
+			EOF
+```
+https://github.com/armbian/build/blob/master/packages/bsp/common/usr/lib/armbian/armbian-firstlogin#L297-L304
