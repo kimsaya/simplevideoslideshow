@@ -68,6 +68,10 @@ allow-guest=false
 ```
 Note that also removed the password for my user (in my case 'pi')
 
+# System
+- Monitor always on
+https://superuser.com/questions/404012/how-to-prevent-the-monitor-from-turning-off-in-linux
+
 # Users
 - Remove password
 ```sh
