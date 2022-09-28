@@ -54,7 +54,7 @@ func CreateDirectory(path string) {
 func CreateFile(path string) {
 	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("[ERR] Create file error", err)
 	}
 	defer f.Close()
 }
