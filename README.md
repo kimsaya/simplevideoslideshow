@@ -67,3 +67,11 @@ greeter-hide-users=false
 allow-guest=false
 ```
 Note that also removed the password for my user (in my case 'pi')
+
+# Users
+- Remove password
+```sh
+$ sudo passwd -d sweta
+Removing password for user sweta.
+passwd: Success
+```
