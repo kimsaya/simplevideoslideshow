@@ -26,6 +26,10 @@ func GetWebIndexPath() string {
 	return GetCurrentDirectory() + "webs/index.html"
 }
 
+func GetAppJsPath() string {
+	return GetCurrentDirectory() + "webs/app.js"
+}
+
 func GetResourceDirectory() string {
 	return RESOURCE_DIR
 }

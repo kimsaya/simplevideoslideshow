@@ -13,3 +13,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 func Content(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, player.GetPlayNext())
 }
+
+func AppJs(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, files.GetAppJsPath())
+}

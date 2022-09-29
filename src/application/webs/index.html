@@ -10,49 +10,7 @@
         <source id="source" src="">
         </source>
     </video>
-    <script type="text/javascript">
-        var url = "http://localhost:8080/"
-        var video = document.getElementById('video');
-        var sources = document.getElementById('source');
-        loadVideo();
-
-        video.onplay = function () {
-            showVideo();
-        }
-
-        video.onended = function () {
-            loadVideo();
-        }
-
-        sources.onerror = function () {
-            sleep(5000);
-            hideVideo();
-            loadVideo();
-        }
-
-        function loadVideo() {
-            sources.src = url + "content?time=" + new Date().getTime();
-            video.load();
-        }
-
-        function hideVideo() {
-            if (video.style.display === "none") {
-                return;
-            }
-            video.style.display = "none";
-
-        }
-
-        function showVideo() {
-            if (video.style.display === "block") {
-                return;
-            }
-            video.style.display = "block";
-        }
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+    <script type="text/javascript" src="/script/app">
     </script>
 </body>
 </head>

@@ -23,9 +23,14 @@ func LoadEnv() *assets.Core {
 	core.SetResourceDir(os.Getenv("RESOURCE_DIR"))
 	interval, err := strconv.ParseInt(os.Getenv("AWAKE_INTERVAL"), 0, 8)
 	if err != nil {
-		log.Fatalln("[ERR] Awake interval config", err)
+		interval = 1
 	}
 	core.SetAwakeInterval(interval)
+	isAlwaysOn, err := strconv.ParseBool(os.Getenv("ALWAYS_ON"))
+	if err != nil {
+		isAlwaysOn = false
+	}
+	core.SetAlwaysOn(isAlwaysOn)
 
 	return core
 }

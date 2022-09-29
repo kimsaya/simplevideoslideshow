@@ -5,6 +5,7 @@ type Core struct {
 	com_port       string
 	resourcedir    string
 	awake_interval int64
+	always_on      bool
 }
 
 func (obj *Core) SetPort(port string) {
@@ -52,4 +53,12 @@ func (obj *Core) SetAwakeInterval(interval int64) {
 
 func (obj *Core) GetAwakeInterval() int64 {
 	return obj.awake_interval
+}
+
+func (obj *Core) SetAlwaysOn(status bool) {
+	obj.always_on = status
+}
+
+func (obj *Core) IsAlwaysOn() bool {
+	return obj.always_on
 }

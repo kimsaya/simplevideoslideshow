@@ -5,9 +5,10 @@ import "watervideodisplay/src/application/cores/files"
 var index int = 0
 
 var IsTimeOff = true
+var IsAlwaysOn = false
 
 func GetPlayNext() string {
-	if IsTimeOff {
+	if IsTimeOff && !IsAlwaysOn {
 		return ""
 	}
 	list := files.ReadDirectory(files.GetResourceDirectory())

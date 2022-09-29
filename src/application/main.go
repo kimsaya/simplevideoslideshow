@@ -21,11 +21,13 @@ func main() {
 	log.Println("Water Display Start")
 	core = cores.LoadEnv()
 	files.SetResourceDir(core.GetResourceDir())
+	player.IsAlwaysOn = core.IsAlwaysOn()
 	// fmt.Println(core)
 	serial.InitPort(core.GetComPort())
 	go awake()
 
 	http.HandleFunc("/", api.Index)
+	http.HandleFunc("/script/app", api.AppJs)
 	http.HandleFunc("/content", api.Content)
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%v", core.GetPort()), nil))
 
