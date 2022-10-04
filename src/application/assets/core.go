@@ -34,7 +34,7 @@ func (obj *Core) GetResourceDir() string {
 
 func (obj *Core) SetComPort(comport string) {
 	if len(comport) == 0 || comport == "" {
-		obj.com_port = "COM5"
+		obj.com_port = ""
 		return
 	}
 	obj.com_port = comport

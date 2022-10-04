@@ -1,11 +1,43 @@
 var video = document.getElementById('video');
+var image = document.getElementById('image');
 var sources = document.getElementById('source');
-var isLoad = false
-setInterval(loop, 1000);
+var duration = 1000;
+var mainLoop = setInterval(loop, duration);
 
+var getJSON = function (url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function () {
+        var status = xhr.status;
+        if (status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status, xhr.response);
+        }
+    };
+    xhr.send();
+};
+
+function getContent() {
+    getJSON('/content',
+        function (err, data) {
+            if (err !== null) {
+                alert('Read Content Failed ' + err);
+            } else {
+                // alert('Your query count: ' + data.name);
+                if (data.item_type == "video") {
+                    sources.src = "/play?url=" + data.url;
+                    video.load();
+                }
+            }
+        });
+}
+
+// Video function
 video.onplay = function () {
     showVideo();
-    isLoad = true;
+    stopLoop();
 }
 
 video.onended = function () {
@@ -14,18 +46,26 @@ video.onended = function () {
 
 sources.onerror = function () {
     hideVideo();
-    isLoad = false
+    setLoop();
     console.clear();
 }
 
+function setLoop() {
+    stopLoop();
+    mainLoop = setInterval(loop, duration);
+}
+
+function stopLoop() {
+    clearInterval(mainLoop);
+}
+
 function loop() {
-    if (!isLoad) {
-        loadVideo();
-    }
+    // loadVideo();
+    getContent();
 }
 
 function loadVideo() {
-    sources.src = "/content?time=" + new Date().getTime();
+    sources.src = "/nextvideo?time=" + new Date().getTime();
     video.load();
 }
 
@@ -42,4 +82,19 @@ function showVideo() {
         return;
     }
     video.style.display = "block";
+}
+
+function hideImage() {
+    if (image.style.display === "none") {
+        return;
+    }
+    image.style.display = "none";
+
+}
+
+function showImage() {
+    if (image.style.display === "block") {
+        return;
+    }
+    image.style.display = "block";
 }

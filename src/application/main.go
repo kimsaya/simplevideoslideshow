@@ -21,14 +21,20 @@ func main() {
 	log.Println("Water Display Start")
 	core = cores.LoadEnv()
 	files.SetResourceDir(core.GetResourceDir())
-	player.IsAlwaysOn = core.IsAlwaysOn()
 	// fmt.Println(core)
-	serial.InitPort(core.GetComPort())
-	go awake()
+	if len(core.GetComPort()) > 0 {
+		serial.InitPort(core.GetComPort())
+	}
+	if !core.IsAlwaysOn() {
+		player.IsTimeOff = true
+		go awake()
+	}
 
 	http.HandleFunc("/", api.Index)
 	http.HandleFunc("/script/app", api.AppJs)
 	http.HandleFunc("/content", api.Content)
+	http.HandleFunc("/nextvideo", api.NextVideo)
+	http.HandleFunc("/play", api.PlayVideo)
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%v", core.GetPort()), nil))
 
 	// This class can build only in Linux env

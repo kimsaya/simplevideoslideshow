@@ -3,22 +3,33 @@ package player
 import "watervideodisplay/src/application/cores/files"
 
 var index int = 0
+var listSize int = 0
 
-var IsTimeOff = true
-var IsAlwaysOn = false
+var IsTimeOff = false
 
 func GetPlayNext() string {
-	if IsTimeOff && !IsAlwaysOn {
+	if IsTimeOff {
 		return ""
 	}
 	list := files.ReadDirectory(files.GetResourceDirectory())
-	if len(list) == 0 {
+	listSize = len(list)
+	if listSize == 0 {
 		return files.GetVideoEndedPath()
 	}
-	if index >= len(list) {
+	if index >= listSize {
 		index = 0
 	}
 	path := files.GetResourceDirectory() + list[index].Name()
 	index++
+	return path
+}
+
+func GetPlay(ind int) string {
+	list := files.ReadDirectory(files.GetResourceDirectory())
+	listSize = len(list)
+	if ind >= listSize {
+		ind = 0
+	}
+	path := files.GetResourceDirectory() + list[ind].Name()
 	return path
 }
