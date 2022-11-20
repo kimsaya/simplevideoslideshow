@@ -2,6 +2,7 @@ package serial
 
 import (
 	"log"
+	"watervideodisplay/src/application/services/player"
 
 	"github.com/tarm/serial"
 )
@@ -22,7 +23,9 @@ func run(port string) {
 
 	stream, err := serial.OpenPort(config)
 	if err != nil {
-		log.Fatal("[ERR] Connection com port error", port, err)
+		log.Println("[ERR] Connection com port error", port, err)
+		player.IsAlwaysOn = true
+		return
 	}
 
 	buf := make([]byte, 1024)

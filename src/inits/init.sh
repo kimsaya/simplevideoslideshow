@@ -1,5 +1,7 @@
+#!/bin/bash
+
 sudo apt update
-sudo apt -y upgrade
+# sudo apt -y upgrade
 sudo apt install -y firefox
 sudo apt install -y ntp
 sudo apt install -y unclutter

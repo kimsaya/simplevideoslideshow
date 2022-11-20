@@ -28,9 +28,7 @@ func initLogEnv() {
 }
 
 func initConfigEnv() {
-	configDir := files.GetCurrentDirectory() + "configs/"
-	files.CreateDirectory(configDir)
-	configFile := configDir + "application.env"
+	configFile := files.GetEnvPath()
 	if !files.IsFileExit(configFile) {
 		// files.CreateFile(configFile)
 		files.WriteFile(configFile, "PORT=8080")

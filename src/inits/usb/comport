@@ -1,0 +1,3 @@
+ls /dev/tty*
+
+Then name should be /dev/ttyUSB0 or /dev/ttyAMS ..etc

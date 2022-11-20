@@ -1,0 +1,5 @@
+
+# Add
+
+# USB
+UUID=4C45-4FBD /home/orangepi/videoapp/resource vfat defaults 0 0

@@ -19,7 +19,7 @@ func SetResourceDir(dir string) {
 }
 
 func GetEnvPath() string {
-	return GetCurrentDirectory() + "configs/application.env"
+	return GetCurrentDirectory() + "application.env"
 }
 
 func GetWebIndexPath() string {
