@@ -1,5 +1,11 @@
+# Note
+Flash support only vfat or FAT(Default)
 
-# Add
+# List
+sudo blkid
+
+# Edit
+/etc/fstab
 
 # USB
-UUID=4C45-4FBD /home/orangepi/videoapp/resource vfat defaults 0 0
+UUID=4C45-4FBD /home/orangepi/videoapp/resource auto nosuid,nodev,nofail 0 0

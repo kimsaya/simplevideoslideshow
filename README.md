@@ -1,4 +1,9 @@
 # simplevideoslideshow
+ssh root@192.168.100.82
+ssh orangepi@192.168.100.82
+orangepi
+
+orangepi-config
 
 # Fire Fox
 - Turn off firefox security

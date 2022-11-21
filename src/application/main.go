@@ -37,10 +37,11 @@ func main() {
 
 func awake() {
 	for {
-		time.Sleep(time.Duration(core.GetAwakeInterval() * int64(time.Second)))
+		time.Sleep(time.Duration(1 * int64(time.Second)))
 		if len(serial.Message) > 0 {
 			serial.Message = ""
 			player.IsTimeOff = false
+			time.Sleep(time.Duration(core.GetAwakeInterval() * int64(time.Second)))
 		} else {
 			player.IsTimeOff = true
 		}

@@ -21,7 +21,7 @@ func LoadEnv() *assets.Core {
 	core.SetPort(os.Getenv("PORT"))
 	core.SetComPort(os.Getenv("COM_PORT"))
 	core.SetResourceDir(os.Getenv("RESOURCE_DIR"))
-	interval, err := strconv.ParseInt(os.Getenv("AWAKE_INTERVAL"), 0, 8)
+	interval, err := strconv.ParseInt(os.Getenv("AWAKE_INTERVAL"), 0, 32)
 	if err != nil {
 		interval = 1
 	}
